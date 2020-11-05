@@ -1,4 +1,4 @@
-# protodash
+# Solar Performance Insight Dashboard
 
 ## Project setup
 ```
