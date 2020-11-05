@@ -1,16 +1,19 @@
 <template>
   <div class="Inverters">
     <div class="inverters-list">
+      <h2>Inverters</h2>
       <button @click="addInverter">Add Inverter</button>
+      <div class="msg warning" v-if="inverters.length == 0">
+        System requires at least one inverter.
+      </div>
       <ul>
-        <li v-for="(inverter, index) in inverters" :key="index">
-          <input v-model="inverter.name"/>
-          <input v-model="inverter.makeModel"/>
-          <!--
-          <input v-model:"inverter.inverterParameters"/>
-          <input v-model:"inverter.arrays"/>
-           -->
-        </li>
+        <inverter-view
+          class="inverter"
+          v-for="(inverter, index) in inverters"
+          :key="index"
+          :index="index"
+          :inverter="inverter"
+        />
       </ul>
     </div>
   </div>
@@ -18,13 +21,17 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import InverterView from "@/components/Inverter";
 import { Inverter } from "@/types/Inverter";
 
+Vue.component("inverter-view", InverterView);
 @Component
-export default class Inverters extends Vue {
+export default class InvertersView extends Vue {
   @Prop() inverters: Array<Inverter>;
 
-  addInverter(){
+  components = ["inverter-view"];
+
+  addInverter() {
     this.inverters.push(new Inverter());
   }
 }
@@ -32,18 +39,14 @@ export default class Inverters extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
 ul {
   list-style-type: none;
   padding: 0;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+li.inverter {
+  margin: 0.5em;
+  padding: 0.5em;
+  border: 1px solid #000;
+  width: fit-content;
 }
 </style>
