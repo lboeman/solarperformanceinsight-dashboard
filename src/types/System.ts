@@ -5,23 +5,27 @@ export class System {
   latitude: number;
   longitude: number;
   elevation: number;
+  albedo: number;
   inverters: Array<Inverters>;
 
-  constructor(
+  constructor({
     name="New System",
     latitude=0,
     longitude=0,
     elevation=0,
+    albedo=0,
     inverters=[],
+  }={}
   ){
       this.name = name;
       this.latitude = latitude;
       this.longitude = longitude;
       this.elevation = elevation;
+      this.albedo = 0;
       if (inverters.length == 0 ){
         this.inverters = [new Inverter()];
       } else {
-        this.intervers = inverters;
+        this.inverters = inverters.map(i => new Inverter(i));
       }
   }
 }

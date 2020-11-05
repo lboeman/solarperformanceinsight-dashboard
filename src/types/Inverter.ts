@@ -8,21 +8,23 @@ export class Inverter {
   lossesParameters: any;
   arrays: Array<PVArray>;
 
-  constructor(
+  constructor({
     name="New Inverter",
-    makeModel="",
+    makeModel="ABC 520",
     inverterParameters={},
     lossesParameters={},
     arrays=[],
+  }={}
   ){
     this.name = name;
     this.makeModel = makeModel;
     this.inverterParameters = inverterParameters;
     this.lossesParameters = lossesParameters;
+
     if (arrays.length == 0){
       this.arrays = [ new PVArray() ];
     } else{
-      this.arrays = arrays;
+      this.arrays = arrays.map(a => new PVArray(a));
     }
   }
 }

@@ -7,12 +7,32 @@ import { ModuleParameters } from "./Module";
 export class PVArray {
   name: string;
   makeModel: string;
-  module_arameters: ModuleParamters;
-  temperature_model_parameters: Array<number>;
-  albedo: number;
+  moduleParameters: ModuleParamters;
+  temperatureModelParameters: Array<number>;
   tracking: FixedTrackingParameters | SingleAxisTrackingParameters;
   // PVSyst parameters
-  module_per_string: number;
+  modulesPerString: number;
   strings: number;
-  losses_parameters: any;
+  lossesParameters: any;
+
+  constructor({
+    name="New Array",
+    makeModel="ABC 123",
+    moduleParameters={},
+    temperatureModuleParameters=[],
+    tracking= new FixedTrackingParameters(),
+    modulesPerString=0,
+    strings=0,
+    lossesParameters={},
+  }={}
+  ){
+    this.name = name;
+    this.makeModel = makeModel;
+    this.moduleParameters = moduleParameters;
+    this.temperatureModuleParameters = temperatureModuleParameters;
+    this.tracking = tracking;
+    this.modulesPerString = modulesPerString;
+    this.strings = strings;
+    this.lossesParameters = lossesParameters
+  }
 }
