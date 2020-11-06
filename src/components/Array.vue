@@ -1,9 +1,9 @@
 <template>
   <li class="array">
-    <b>Name: </b><input v-model="pvarray.name" /><br />
-
-    <b>Make and Model: </b><input v-model="pvarray.makeModel" /><br />
     <b>Inverter Name: </b> {{ $parent.$parent.inverter.name }} <br />
+    <b>Name: </b><input v-model="pvarray.name" /><br />
+    <b>Make and Model: </b><input v-model="pvarray.makeModel" /><br />
+    <b>Module Parameters: </b><br />
     <module-parameters-view :parameters="pvarray.moduleParameters" />
     <button @click="removeArray">Remove Array</button><br />
     <button @click="duplicateArray">Duplicate Array</button>

@@ -49,7 +49,7 @@ export default class ModuleParametersView extends Vue {
     };
   }
 
-  loadInverter(event: Event) {
+  loadModule(event: Event) {
     // TODO: load inverter from correct source based on selected model.
     console.log(event.target);
   }
@@ -71,7 +71,7 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-div.inverter-parameters {
+div.module-parameters {
   margin: 0.5em;
   padding: 0.5em;
   border: 1px solid #000;

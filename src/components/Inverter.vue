@@ -14,7 +14,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import InverterParametersView from "@/components/InverterParameters.vue";
-import InvertersView from "@/components/Inverters.vue";
 import ArraysView from "@/components/Arrays.vue";
 import { Inverter } from "@/types/Inverter";
 

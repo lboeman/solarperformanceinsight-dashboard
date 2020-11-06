@@ -18,6 +18,7 @@ Vue.component("inverters-view", InvertersView);
 @Component
 export default class SystemView extends Vue {
   @Prop() system!: System;
+
   components = ["inverters-view"];
 }
 </script>
