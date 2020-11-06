@@ -14,22 +14,19 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import {
-  FixedTrackingParameters,
-  SingleAxisTrackingParameters
-} from "@/types/Tracking";
 import { PVArray } from "@/types/PVArray";
 
 @Component
 export default class ArrayView extends Vue {
-  @Prop() pvarray: PVArray;
-  @Prop() index: number;
+  @Prop() pvarray!: PVArray;
+  @Prop() index!: number;
 
   removeArray() {
-    //Temporary to assert behavior works. should remove specific array.
+    //@ts-ignore
     this.$parent.pvarrays.splice(this.index, 1);
   }
   duplicateArray() {
+    //@ts-ignore
     this.$parent.pvarrays.push(new PVArray(this.pvarray));
   }
 }

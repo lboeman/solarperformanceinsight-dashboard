@@ -39,7 +39,9 @@ Vue.component("arrays-view", ArraysView);
 export default class InverterParametersView extends Vue {
   // extend acceptable types for InverterParameters to include a PVWatts class
   @Prop() parameters!: InverterParameters;
+
   @Prop({ default: "pvsyst" }) model!: string;
+
   @Prop({ default: null }) selectedInverter!: string;
 
   data() {
@@ -48,9 +50,9 @@ export default class InverterParametersView extends Vue {
     };
   }
 
-  loadInverter(event: any) {
+  loadInverter(event: Event) {
     // TODO: load inverter from correct source based on selected model.
-    console.log(event.target.value);
+    console.log(event.target);
   }
 
   get parameterOptions() {

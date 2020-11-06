@@ -11,14 +11,13 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import InvertersView from "@/components/Inverters";
+import InvertersView from "@/components/Inverters.vue";
 import { System } from "@/types/System";
-import { Inverter } from "@/types/Inverter";
 
 Vue.component("inverters-view", InvertersView);
 @Component
 export default class SystemView extends Vue {
-  @Prop({ default: new System() }) system: System;
+  @Prop() system!: System;
   components = ["inverters-view"];
 }
 </script>

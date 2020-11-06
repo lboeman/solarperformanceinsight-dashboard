@@ -45,5 +45,7 @@ export class InverterParameters {
     this.Pnt = Pnt;
   }
 
-  static fromPvlibDb(row) { return new InverterParameters()}
+  static fromPvlibDb(row: string) {
+    return new InverterParameters();
+  }
 }

@@ -13,8 +13,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import InverterParametersView from "@/components/InverterParameters";
-import ArraysView from "@/components/Arrays";
+import InverterParametersView from "@/components/InverterParameters.vue";
+import InvertersView from "@/components/Inverters.vue";
+import ArraysView from "@/components/Arrays.vue";
 import { Inverter } from "@/types/Inverter";
 
 Vue.component("arrays-view", ArraysView);
@@ -22,13 +23,15 @@ Vue.component("inverter-parameters", InverterParametersView);
 
 @Component
 export default class InverterView extends Vue {
-  @Prop() inverter: Inverter;
-  @Prop() index: number;
+  @Prop() inverter!: Inverter;
+  @Prop() index!: number;
 
   removeInverter() {
+    //@ts-ignore
     this.$parent.inverters.splice(this.index, 1);
   }
   duplicateInverter() {
+    //@ts-ignore
     this.$parent.inverters.push(new Inverter(this.inverter));
   }
 }
