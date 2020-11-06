@@ -3,7 +3,10 @@ import {
   SingleAxisTrackingParameters
 } from "./Tracking";
 import { PvsystTemperatureParameters } from "./TemperatureParameters";
-import { PVSystModuleParameters, PVWattsModuleParameters } from "./Module";
+import {
+  PVSystModuleParameters,
+  PVWattsModuleParameters
+} from "./ModuleParameters";
 
 export class PVArray {
   name: string;

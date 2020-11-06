@@ -11,17 +11,17 @@ export class PVSystModuleParameters {
   cells_in_series: number;
 
   constructor({
-    gamma_ref=0,
-    mu_gamma=0,
-    I_L_ref=0,
-    I_o_ref=0,
-    R_sh_ref=0,
-    R_sh_0=0,
-    R_s=0,
-    alpha_sc=0,
-    EgRef=0,
-    cells_in_series=0
-  }={}){
+    gamma_ref = 0,
+    mu_gamma = 0,
+    I_L_ref = 0,
+    I_o_ref = 0,
+    R_sh_ref = 0,
+    R_sh_0 = 0,
+    R_s = 0,
+    alpha_sc = 0,
+    EgRef = 0,
+    cells_in_series = 0
+  } = {}) {
     this.gamma_ref = gamma_ref;
     this.mu_gamma = mu_gamma;
     this.I_L_ref = I_L_ref;
@@ -35,15 +35,11 @@ export class PVSystModuleParameters {
   }
 }
 
-
 export class PVWattsModuleParameters {
   pdc0: number;
   gamma_pdc: number;
 
-  constructor({
-    pdc0=0,
-    gamma_pdc=0
-  }={}){
+  constructor({ pdc0 = 0, gamma_pdc = 0 } = {}) {
     this.pdc0 = pdc0;
     this.gamma_pdc = gamma_pdc;
   }

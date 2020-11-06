@@ -4,9 +4,7 @@
 
     <b>Make and Model: </b><input v-model="pvarray.makeModel" /><br />
     <b>Inverter Name: </b> {{ $parent.$parent.inverter.name }} <br />
-    <!--
-    <input :parameters="pvarray.moduleParameters"/>
-     -->
+    <module-parameters-view :parameters="pvarray.moduleParameters" />
     <button @click="removeArray">Remove Array</button><br />
     <button @click="duplicateArray">Duplicate Array</button>
   </li>
@@ -15,6 +13,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { PVArray } from "@/types/PVArray";
+import ModuleParametersView from "@/components/ModuleParameters.vue";
+
+Vue.component("module-parameters-view", ModuleParametersView);
 
 @Component
 export default class ArrayView extends Vue {

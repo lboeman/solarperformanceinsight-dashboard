@@ -1,7 +1,7 @@
 <template>
-  <div class="inverter-parameters">
+  <div class="module-parameters">
     <b>Parameter source: </b>
-    <select v-model="parameterSource" name="parameter-source">
+    <select v-model="parameterSource" name="module-parameter-source">
       <option>User Supplied</option>
       <option>Browse Database</option> </select
     ><br />
@@ -10,35 +10,34 @@
          component with some search functionality built in
      -->
     <div v-if="parameterSource !== 'User Supplied'">
-      <b>Select an Inverter: </b>
-      <select @change="loadInverter" name="inverter-list">
+      <b>Select a Module: </b>
+      <select @change="loadModule" name="module-list">
         <option v-for="p in parameterOptions" :key="p">{{ p }}</option> </select
       ><br />
     </div>
-    <b>AC Power Rating: </b><input v-model="parameters.Paco" /><br />
-    <b>DC Power Rating: </b><input v-model="parameters.Pdco" /><br />
-    <b>Vdco: </b><input v-model="parameters.Vdco" /><br />
-    <b>Pso: </b><input v-model="parameters.Pso" /><br />
-    <b>C0: </b><input v-model="parameters.C0" /><br />
-    <b>C1: </b><input v-model="parameters.C1" /><br />
-    <b>C2: </b><input v-model="parameters.C2" /><br />
-    <b>C3: </b><input v-model="parameters.C3" /><br />
-    <b>Pnt: </b><input v-model="parameters.Pnt" /><br />
+    <b>gamma_ref: </b><input v-model="parameters.gamma_ref" /><br />
+    <b>mu_gamma: </b><input v-model="parameters.mu_gamma" /><br />
+    <b>I_L_ref: </b><input v-model="parameters.I_L_ref" /><br />
+    <b>I_o_ref: </b><input v-model="parameters.I_o_ref" /><br />
+    <b>R_sh_ref: </b><input v-model="parameters.R_sh_ref" /><br />
+    <b>R_sh_0: </b><input v-model="parameters.R_sh_0" /><br />
+    <b>R_s: </b><input v-model="parameters.R_s" /><br />
+    <b>alpha_sc: </b><input v-model="parameters.alpha_sc" /><br />
+    <b>EgRef: </b><input v-model="parameters.EgRef" /><br />
+    <b>cells_in_series: </b><input v-model="parameters.cells_in_series" /><br />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import ArraysView from "@/components/Arrays.vue";
 // Update with many classes of inverter parameters to check for type before
 // choosing a display.
-import { InverterParameters } from "@/types/InverterParameters";
+import { PVSystModuleParameters } from "@/types/ModuleParameters";
 
-Vue.component("arrays-view", ArraysView);
 @Component
-export default class InverterParametersView extends Vue {
+export default class ModuleParametersView extends Vue {
   // extend acceptable types for InverterParameters to include a PVWatts class
-  @Prop() parameters!: InverterParameters;
+  @Prop() parameters!: PVSystModuleParameters;
 
   @Prop({ default: "pvsyst" }) model!: string;
 
@@ -58,7 +57,7 @@ export default class InverterParametersView extends Vue {
   get parameterOptions() {
     // Return a list of parameter options based on currently selected model
     if (this.model == "pvsyst") {
-      return ["PVSystInverter_0", "PVSystInverter_1"];
+      return ["PVSystModule_0", "PVSystModule_1"];
     } else {
       return [];
     }
