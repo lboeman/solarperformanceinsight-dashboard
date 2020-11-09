@@ -47,7 +47,7 @@ export class PVArray {
       this.tracking = new SingleAxisTrackingParameters(tracking);
     }
 
-    if (if temperatureModelParameters instanceof PvsystTemperatureParameters){
+    if (temperatureModelParameters instanceof PvsystTemperatureParameters){
         this.temperatureModelParameters = new PvsystTemperatureParameters(
             temperatureModelParameters);
     } else {

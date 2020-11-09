@@ -2,9 +2,9 @@
   <li class="inverter">
     <b>System Name: </b> {{ $parent.$parent.system.name }}<br />
     <b>Name: </b><input v-model="inverter.name" /><br />
-    <b>Make and Model: </b><input v-model="inverter.makeModel" /><br />
+    <b>Make and Model: </b><input v-model="inverter.make_model" /><br />
     <b>Inverter Parameters:</b><br />
-    <inverter-parameters :parameters="inverter.inverterParameters" />
+    <inverter-parameters :parameters="inverter.inverter_parameters" />
     <arrays-view :pvarrays="inverter.arrays" /><br />
     <button @click="removeInverter">Remove Inverter</button><br />
     <button @click="duplicateInverter">Duplicate Inverter</button>
