@@ -31,11 +31,27 @@ export class PVArray {
   } = {}) {
     this.name = name;
     this.makeModel = makeModel;
-    this.moduleParameters = moduleParameters;
-    this.temperatureModelParameters = temperatureModelParameters;
-    this.tracking = tracking;
     this.modulesPerString = modulesPerString;
     this.strings = strings;
     this.lossesParameters = lossesParameters;
+
+    if (moduleParameters instanceof PVWattsModuleParameters){
+      this.moduleParameters = new PVWattsModuleParameters(moduleParameters);
+    } else {
+      this.moduleParameters = new PVSystModuleParameters(moduleParameters);
+    }
+
+    if (tracking instanceof FixedTrackingParameters){
+      this.tracking = new FixedTrackingParameters(tracking);
+    } else {
+      this.tracking = new SingleAxisTrackingParameters(tracking);
+    }
+
+    if (if temperatureModelParameters instanceof PvsystTemperatureParameters){
+        this.temperatureModelParameters = new PvsystTemperatureParameters(
+            temperatureModelParameters);
+    } else {
+        this.temperatureModelParameters = temperatureModelParameters
+    }
   }
 }
