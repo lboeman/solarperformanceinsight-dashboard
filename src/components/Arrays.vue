@@ -13,6 +13,7 @@
           :key="index"
           :index="index"
           :pvarray="pvarray"
+          :model="model"
         />
       </ul>
     </div>
@@ -28,6 +29,7 @@ Vue.component("array-view", ArrayView);
 @Component
 export default class ArraysView extends Vue {
   @Prop() pvarrays!: Array<PVArray>;
+  @Prop() model!: string;
 
   addArray() {
     this.pvarrays.push(new PVArray());

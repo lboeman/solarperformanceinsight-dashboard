@@ -4,15 +4,22 @@
     <b>Name: </b><input v-model="pvarray.name" /><br />
     <b>Make and Model: </b><input v-model="pvarray.makeModel" /><br />
     <b>Module Parameters: </b><br />
-    <module-parameters-view :parameters="pvarray.moduleParameters" />
+    <module-parameters-view
+     :parameters="pvarray.moduleParameters"
+     :model="model"/>
     <button @click="removeArray">Remove Array</button><br />
     <button @click="duplicateArray">Duplicate Array</button>
   </li>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { PVArray } from "@/types/PVArray";
+import {
+  PVSystModuleParameters,
+  PVWattsModuleParameters,
+} from "@/types/ModuleParameters";
+
 import ModuleParametersView from "@/components/ModuleParameters.vue";
 
 Vue.component("module-parameters-view", ModuleParametersView);
@@ -21,6 +28,16 @@ Vue.component("module-parameters-view", ModuleParametersView);
 export default class ArrayView extends Vue {
   @Prop() pvarray!: PVArray;
   @Prop() index!: number;
+  @Prop() model!: string;
+
+  @Watch("model")
+  changeModel(newModel: string, oldModel: string){
+    if (newModel == "pvsyst"){
+      this.pvarray.moduleParameters = new PVSystModuleParameters();
+    } else if (newModel == "pvwatts"){
+      this.pvarray.moduleParameters = new PVWattsModuleParameters();
+    }
+  }
 
   removeArray() {
     //@ts-ignore

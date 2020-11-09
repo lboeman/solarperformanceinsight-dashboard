@@ -5,17 +5,21 @@
     <b>Make and Model: </b><input v-model="inverter.make_model" /><br />
     <b>Inverter Parameters:</b><br />
     <inverter-parameters :parameters="inverter.inverter_parameters" />
-    <arrays-view :pvarrays="inverter.arrays" /><br />
+    <arrays-view :pvarrays="inverter.arrays" :model="model"/><br />
     <button @click="removeInverter">Remove Inverter</button><br />
     <button @click="duplicateInverter">Duplicate Inverter</button>
   </li>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import InverterParametersView from "@/components/InverterParameters.vue";
 import ArraysView from "@/components/Arrays.vue";
 import { Inverter } from "@/types/Inverter";
+import {
+ PVSystInverterParameters,
+ PVWattsInverterParameters
+} from "@/types/InverterParameters";
 
 Vue.component("arrays-view", ArraysView);
 Vue.component("inverter-parameters", InverterParametersView);
@@ -24,7 +28,20 @@ Vue.component("inverter-parameters", InverterParametersView);
 export default class InverterView extends Vue {
   @Prop() inverter!: Inverter;
   @Prop() index!: number;
+  @Prop() model!: string;
 
+  @Watch("model")
+  changeModel(newModel: string, oldModel: string) {
+    if (newModel == "pvsyst"){
+      this.inverter.inverter_parameters = new PVSystInverterParameters();
+    } else if (newModel == "pvwatts"){
+      this.inverter.inverter_parameters = new PVWattsInverterParameters();
+    }
+  }
+
+  created() {
+    console.log(this.inverter);
+  }
   removeInverter() {
     //@ts-ignore
     this.$parent.inverters.splice(this.index, 1);

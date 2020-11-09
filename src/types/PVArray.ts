@@ -35,23 +35,24 @@ export class PVArray {
     this.strings = strings;
     this.lossesParameters = lossesParameters;
 
-    if (moduleParameters instanceof PVWattsModuleParameters){
+    if (moduleParameters instanceof PVWattsModuleParameters) {
       this.moduleParameters = new PVWattsModuleParameters(moduleParameters);
     } else {
       this.moduleParameters = new PVSystModuleParameters(moduleParameters);
     }
 
-    if (tracking instanceof FixedTrackingParameters){
+    if (tracking instanceof FixedTrackingParameters) {
       this.tracking = new FixedTrackingParameters(tracking);
     } else {
       this.tracking = new SingleAxisTrackingParameters(tracking);
     }
 
-    if (temperatureModelParameters instanceof PvsystTemperatureParameters){
-        this.temperatureModelParameters = new PvsystTemperatureParameters(
-            temperatureModelParameters);
+    if (temperatureModelParameters instanceof PvsystTemperatureParameters) {
+      this.temperatureModelParameters = new PvsystTemperatureParameters(
+        temperatureModelParameters
+      );
     } else {
-        this.temperatureModelParameters = temperatureModelParameters
+      this.temperatureModelParameters = temperatureModelParameters;
     }
   }
 }

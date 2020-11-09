@@ -5,7 +5,11 @@
     <b>Longitude: </b><input v-model="system.longitude" /><br />
     <b>Elevation: </b><input v-model="system.elevation" /><br />
     <b>Albedo: </b><input v-model="system.albedo" /><br />
-    <inverters-view :inverters="system.inverters" />
+    <b>Model: </b>
+    <select v-model="model">
+    <option v-for="m in modelOptions" :key="m">{{ m }}</option>
+    </select>
+    <inverters-view :inverters="system.inverters" :model="model"/>
   </div>
 </template>
 
@@ -18,8 +22,16 @@ Vue.component("inverters-view", InvertersView);
 @Component
 export default class SystemView extends Vue {
   @Prop() system!: System;
+  //@Prop({default: 'pvsyst'}) model: str;
 
   components = ["inverters-view"];
+
+  data(){
+    return {
+      model: 'pvsyst',
+      modelOptions: ['pvsyst', 'pvwatts'],
+    }
+  }
 }
 </script>
 

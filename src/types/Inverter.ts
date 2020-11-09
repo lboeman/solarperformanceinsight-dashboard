@@ -1,17 +1,20 @@
 import { PVArray } from "./PVArray";
-import { InverterParameters } from "./InverterParameters";
+import {
+  PVSystInverterParameters,
+  PVWattsInverterParameters,
+} from "./InverterParameters";
 
 export class Inverter {
   name: string;
   make_model: string;
-  inverter_parameters: InverterParameters;
+  inverter_parameters: PVSystInverterParameters | PVWattsInverterParameters;
   losses_parameters: any;
   arrays: Array<PVArray>;
 
   constructor({
     name = "New Inverter",
     make_model = "ABC 520",
-    inverter_parameters = new InverterParameters(),
+    inverter_parameters = new PVSystInverterParameters(),
     losses_parameters = {},
     arrays = []
   } = {}) {
