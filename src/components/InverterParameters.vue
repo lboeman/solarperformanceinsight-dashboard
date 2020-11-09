@@ -15,7 +15,7 @@
         <option v-for="p in parameterOptions" :key="p">{{ p }}</option> </select
       ><br />
     </div>
-    <div v-if="model == 'pvsys'">
+    <div v-if="model == 'pvsyst'">
       <b>AC Power Rating: </b><input v-model="parameters.Paco" /><br />
       <b>DC Power Rating: </b><input v-model="parameters.Pdco" /><br />
       <b>Vdco: </b><input v-model="parameters.Vdco" /><br />
@@ -37,8 +37,8 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import ArraysView from "@/components/Arrays.vue";
 import {
- PVSystInverterParameters,
- PVWattsInverterParameters
+  PVSystInverterParameters,
+  PVWattsInverterParameters
 } from "@/types/InverterParameters";
 
 Vue.component("arrays-view", ArraysView);
@@ -46,7 +46,7 @@ Vue.component("arrays-view", ArraysView);
 export default class InverterParametersView extends Vue {
   // extend acceptable types for InverterParameters to include a PVWatts class
   @Prop() parameters!: PVSystInverterParameters | PVWattsInverterParameters;
-  @Prop({ default: "pvsyst" }) model!: string;
+  @Prop() model!: string;
   @Prop({ default: null }) selectedInverter!: string;
 
   data() {

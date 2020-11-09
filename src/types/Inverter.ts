@@ -1,7 +1,7 @@
 import { PVArray } from "./PVArray";
 import {
   PVSystInverterParameters,
-  PVWattsInverterParameters,
+  PVWattsInverterParameters
 } from "./InverterParameters";
 
 export class Inverter {

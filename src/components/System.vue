@@ -7,9 +7,9 @@
     <b>Albedo: </b><input v-model="system.albedo" /><br />
     <b>Model: </b>
     <select v-model="model">
-    <option v-for="m in modelOptions" :key="m">{{ m }}</option>
+      <option v-for="m in modelOptions" :key="m">{{ m }}</option>
     </select>
-    <inverters-view :inverters="system.inverters" :model="model"/>
+    <inverters-view :inverters="system.inverters" :model="model" />
   </div>
 </template>
 
@@ -26,11 +26,11 @@ export default class SystemView extends Vue {
 
   components = ["inverters-view"];
 
-  data(){
+  data() {
     return {
-      model: 'pvsyst',
-      modelOptions: ['pvsyst', 'pvwatts'],
-    }
+      model: "pvsyst",
+      modelOptions: ["pvsyst", "pvwatts"]
+    };
   }
 }
 </script>

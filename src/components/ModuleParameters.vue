@@ -25,12 +25,12 @@
       <b>R_s: </b><input v-model="parameters.R_s" /><br />
       <b>alpha_sc: </b><input v-model="parameters.alpha_sc" /><br />
       <b>EgRef: </b><input v-model="parameters.EgRef" /><br />
-      <b>cells_in_series: </b><input v-model="parameters.cells_in_series" /><br />
+      <b>cells_in_series: </b><input v-model="parameters.cells_in_series" />
+      <br />
     </div>
     <div v-if="model == 'pvwatts'">
       <b>pdc0: </b><input v-model="parameters.pdc0" /><br />
       <b>gamma_pdc: </b><input v-model="parameters.gamma_pdc" /><br />
-
     </div>
   </div>
 </template>
@@ -68,7 +68,7 @@ export default class ModuleParametersView extends Vue {
     if (this.model == "pvsyst") {
       // TODO: load pvsyst compatible parameters
       return ["PVSystModule_0", "PVSystModule_1"];
-    } else if (this.model == "pvwatts"){
+    } else if (this.model == "pvwatts") {
       // TODO: load pvwatts compatible parameters
       return ["PVWattsModule_0", "PVWattsModule_1"];
     } else {
