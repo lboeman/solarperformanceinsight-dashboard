@@ -39,9 +39,6 @@ export default class InverterView extends Vue {
     }
   }
 
-  created() {
-    console.log(this.inverter);
-  }
   removeInverter() {
     //@ts-ignore
     this.$parent.inverters.splice(this.index, 1);
